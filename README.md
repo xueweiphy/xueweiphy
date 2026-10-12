@@ -60,4 +60,4 @@ Following the arc of Stanford's CS336, each piece written on raw tensors and che
 
 ---
 
-*Things in progress land here as they ship. Contact: xueweiphy@gmail.com*
+*Things in progress land here as they ship.*
