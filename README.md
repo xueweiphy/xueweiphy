@@ -9,7 +9,7 @@ My interests are model internals and interpretability, and how training rewards 
 **[soliton_nqs](https://github.com/xueweiphy/soliton_nqs)** connects my research on boson stars to neural-network methods for many-body physics.
 
 - Autoregressive Transformer and MLP wavefunctions trained with variational Monte Carlo for the quantum ground state of N self-gravitating bosons, the quantum version of the Schrödinger–Poisson soliton.
-- Recovers **98–100% of the exact beyond-mean-field correlation energy** where exact diagonalisation is possible (N = 8, 12; error < 0.03% vs 0.7–1.2% for Hartree); predicts a 0.37% beyond-Hartree correction at N = 20, where 3×10⁹ states rule exact diagonalisation out. Checked against exact diagonalisation and Bogoliubov theory.
+- Matches exact diagonalisation **to within 0.03% in energy** at N = 8 and 12 (Hartree: 1.2% and 0.7%), capturing the full beyond-mean-field correlation energy within error bars (100.3 ± 4.3% and 97.7 ± 9.2%); predicts a 0.37% beyond-Hartree correction at N = 20, where 3×10⁹ states rule exact diagonalisation out. Consistent with Bogoliubov theory.
 - Four-backbone ablation: the Transformer is not what makes it work; a structured binomial head initialised at the Hartree state is decisive, and an MLP with 7× fewer parameters matches it.
 - The public benchmarks use a radial-lattice model. Additional 3D-lattice checks are described in the [validation notes](https://github.com/xueweiphy/soliton_nqs/blob/main/HARTREE_CHECK.md), with that code kept separately.
 
@@ -28,7 +28,9 @@ My interests are model internals and interpretability, and how training rewards 
 
 **[lm-post-training](https://github.com/xueweiphy/lm-post-training)** (in progress)
 - Prompting baselines for OLMo-2-1B on the 1,319 GSM8K test questions with vLLM: a 3-shot R1-style prompt lifts format compliance from 62% to 95% and accuracy from **0.1% to 18.5%** at temperature 1.0; a greedy check on the first 100 questions reaches 38%.
-- Implemented the on-policy GRPO components from scratch (prompt/response tokenization and masking, response log-probs, rollout rewards, group-normalized advantages, policy-gradient loss, masked aggregation, microbatched train step), each checked against reference tests. Integrating vLLM rollouts into the training loop is next; RFT, Dr. GRPO and MaxRL comparisons are planned.
+- On-policy GRPO from scratch (prompt/response masking, response log-probs, rollout rewards, group-normalized advantages, policy-gradient loss, microbatched train step, vLLM rollouts), each component checked against reference tests; the only training signal is a 0/1 grader on the final answer.
+- After 200 steps (lr 1e-5, 32 questions × 8 rollouts, 1,024 validation questions): **48.1 ± 0.8%** with the 3-shot prompt (3 seeds), 36.4 ± 2.2% question-only (3 seeds), and 19.9 ± 16.0% with the zero-shot R1 prompt (4 seeds), where the weak seeds collapse to 13–28-token answers. Learning-rate sweep: 3e-6 is too slow, 3e-5 learns fastest and then collapses, 1e-4 diverges within 30 steps.
+- Instruction tuning of Llama 3.1 8B (in progress): zero-shot baselines of 57.9% on MMLU, 15.4% on GSM8K, 1.7% on AlpacaEval, and 56% judged safe on SimpleSafetyTests (about 88% by hand; the 70B judge appears to score the request rather than the reply). Full SFT on 210k prompt–response pairs is next, then DPO.
 - Slurm on UF HiPerGator (RTX Pro 6000 / B200).
 
 ## Foundations
