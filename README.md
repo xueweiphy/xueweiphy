@@ -1,8 +1,7 @@
 
 Theoretical physicist (dark matter, early-universe cosmology, particle physics), now working on machine learning: language models and their training systems, neural quantum states, and reliable scientific agents. 
 
-I am interested in language model internals and interpretability, and how training rewards shape an agent's behavior. I approach these questions through controlled experiments: implement the method, check it against a reference, and use ablations to identify which part of the model is doing the work. Numbers below are reproducible from the commands in each repo.
-
+I am interested in language model internals and interpretability, and how training rewards shape an agent's behavior. 
 ## Neural quantum states for gravitating bosons (original research)
 
 **[soliton_nqs](https://github.com/xueweiphy/soliton_nqs)** connects my research on boson stars to neural-network methods for many-body physics.
