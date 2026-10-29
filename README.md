@@ -1,5 +1,5 @@
 
-Theoretical physicist (dark matter, early-universe cosmology, particle physics), now working on machine learning: language models and their training systems, neural quantum states, and reliable scientific agents. Publications on [INSPIRE](https://inspirehep.net/authors/1051291) and [Google Scholar](https://scholar.google.com/citations?user=iaziYXMAAAAJ) · [LinkedIn](https://www.linkedin.com/in/wei-xue-34914a115/).
+Theoretical physicist (dark matter, early-universe cosmology, particle physics), now working on machine learning: language models and their training systems, neural quantum states, and reliable scientific agents. 
 
 I am interested in language model internals and interpretability, and how training rewards shape an agent's behavior. I approach these questions through controlled experiments: implement the method, check it against a reference, and use ablations to identify which part of the model is doing the work. Numbers below are reproducible from the commands in each repo.
 
